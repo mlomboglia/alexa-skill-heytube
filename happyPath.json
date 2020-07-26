@@ -1,0 +1,11 @@
+{
+  "skillId": "amzn1.ask.skill.09c54e31-4e84-49ea-bd57-031d63769c23",
+  "locale": "en-GB",
+  "type": "text",
+  "userInput": [
+    "alexa open hey tube",
+    "play beatles",
+    "stop",
+    ".quit"
+  ]
+}
