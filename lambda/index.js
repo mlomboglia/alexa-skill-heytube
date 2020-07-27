@@ -83,15 +83,14 @@ const CancelAndStopIntentHandler = {
       (Alexa.getIntentName(handlerInput.requestEnvelope) ===
         "AMAZON.CancelIntent" ||
         Alexa.getIntentName(handlerInput.requestEnvelope) ===
-          "AMAZON.StopIntent")
+          "AMAZON.StopIntent" ||
+        Alexa.getIntentName(handlerInput.requestEnvelope) ===
+          "AMAZON.PauseIntent")
     );
   },
   handle(handlerInput) {
     console.log("CancelAndStopIntentHandler");
     return controller.stop(handlerInput, "Goodbye!");
-    //handle(handlerInput) {
-    //const speakOutput = "Goodbye!";
-    //return handlerInput.responseBuilder.speak(speakOutput).getResponse();
   },
 };
 const SystemExceptionHandler = {
@@ -139,7 +138,7 @@ const ErrorHandler = {
       "Sorry, this is not a valid command. Please say help to hear what you can say.";
 
     return handlerInput.responseBuilder
-      .speak(Alexa.escapeXmlCharacters(message))
+      .speak(message)
       .reprompt(message)
       .getResponse();
   },
@@ -161,7 +160,7 @@ const controller = {
     console.log(audioUrl);
     console.log(audioInfo.title);
     responseBuilder
-      .speak(Alexa.escapeXmlCharacters(`Playing  ${audioInfo.title}`))
+      .speak(`Playing  ${audioInfo.title}`)
       .withShouldEndSession(true)
       .addAudioPlayerPlayDirective(
         playBehavior,
@@ -172,9 +171,9 @@ const controller = {
       );
     return responseBuilder.getResponse();
   },
-  stop(handlerInput, message) {
+  async stop(handlerInput, message) {
     return handlerInput.responseBuilder
-      .speak(Alexa.escapeXmlCharacters(message))
+      .speak(message)
       .addAudioPlayerStopDirective()
       .getResponse();
   },
@@ -184,7 +183,7 @@ const getAudioInfo = (query) => {
   return new Promise((resolve, reject) => {
     var opts = {
       maxResults: 1,
-      key: "key",
+      key: process.env.YOUTUBE_API_KEY,
       part: "id,snippet",
       type: "video",
     };
