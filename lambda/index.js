@@ -14,7 +14,7 @@ const LaunchRequestHandler = {
     console.log("LaunchRequestHandler");
     const message =
       "Welcome to Hey Tube. ask to play a video to start listening.";
-    const reprompt = "You can say, play the Beatles, to begin.";
+    const reprompt = "You can say, play the Whitesnake, to begin.";
     return handlerInput.responseBuilder
       .speak(message)
       .reprompt(reprompt)
