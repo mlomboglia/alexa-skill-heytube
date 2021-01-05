@@ -197,7 +197,18 @@ const getAudioInfo = (query) => {
   });
 };
 
-const getAudioUrl = (videoId) => {
+const getAudioUrl = async (videoId) => {
+    let obj = {};
+    const info = await ytdl.getInfo(videoId, {});
+    const format = await ytdl.chooseFormat(info.formats, { quality: '140' });
+    if (format) {
+        console.log('Format found!', format);
+        obj = { url: format.url, thumbnail: info.thumbnail, title: info.title };
+    }
+    return format.url;
+}
+
+/*
   return new Promise((resolve, reject) => {
     console.log(videoId);
     ytdl.getInfo(videoId, (err, info) => {
@@ -216,6 +227,7 @@ const getAudioUrl = (videoId) => {
     });
   });
 };
+*/
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
