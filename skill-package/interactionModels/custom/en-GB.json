@@ -40,6 +40,16 @@
           "name": "AMAZON.ResumeIntent",
           "slots": [],
           "samples": []
+        },
+        {
+          "name": "AMAZON.LoopOnIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.LoopOffIntent",
+          "slots": [],
+          "samples": []
         }
       ],
       "types": [

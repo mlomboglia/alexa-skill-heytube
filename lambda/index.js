@@ -1,6 +1,7 @@
 const Alexa = require("ask-sdk");
 const search = require("youtube-search");
 const ytdl = require("ytdl-core");
+const constants = require("./constants");
 
 /* INTENT HANDLERS */
 
@@ -93,6 +94,45 @@ const CancelAndStopIntentHandler = {
     return controller.stop(handlerInput, "Goodbye!");
   },
 };
+
+const LoopOnIntentHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    return (
+      playbackInfo.inPlaybackSession &&
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) ===
+        "AMAZON.LoopOnIntent"
+    );
+  },
+  async handle(handlerInput) {
+    const playbackSetting = await getPlaybackSetting(handlerInput);
+    playbackSetting.loop = true;
+
+    return handlerInput.responseBuilder.speak("Loop turned on.").getResponse();
+  },
+};
+
+const LoopOffIntentHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    return (
+      playbackInfo.inPlaybackSession &&
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) ===
+        "AMAZON.LoopOffIntent"
+    );
+  },
+  async handle(handlerInput) {
+    const playbackSetting = await getPlaybackSetting(handlerInput);
+    playbackSetting.loop = false;
+
+    return handlerInput.responseBuilder.speak("Loop turned off.").getResponse();
+  },
+};
+
 const SystemExceptionHandler = {
   canHandle(handlerInput) {
     return (
@@ -154,19 +194,20 @@ const controller = {
   },
   async play(handlerInput, audioInfo) {
     const { responseBuilder } = handlerInput;
+    const playbackInfo = await getPlaybackInfo(handlerInput);
     const playBehavior = "REPLACE_ALL";
     console.log("play");
-    const audioUrl = await getAudioUrl(audioInfo.id);
-    console.log(audioUrl);
+    const formats = await getAudioUrl(audioInfo.id);
+    console.log(formats.url);
     console.log(audioInfo.title);
     responseBuilder
       .speak(`Playing  ${audioInfo.title}`)
       .withShouldEndSession(true)
       .addAudioPlayerPlayDirective(
         playBehavior,
-        audioUrl,
+        formats.url,
         audioInfo.id,
-        0,
+        playbackInfo.offsetInMilliseconds,
         null
       );
     return responseBuilder.getResponse();
@@ -190,45 +231,84 @@ const getAudioInfo = (query) => {
 
     search(query, opts, function (err, results) {
       if (err) {
+        console.log(err);
         reject(err);
       }
+      console.log(results);
       resolve(results);
     });
   });
 };
 
-const getAudioUrl = (videoId) => {
-  return new Promise((resolve, reject) => {
-    console.log(videoId);
-    ytdl.getInfo(videoId, (err, info) => {
-      if (err) {
-        console.log(err);
-        reject(err);
-      }
-      console.log(info.formats);
-      let format = ytdl.chooseFormat(info.formats, { quality: "140" });
-      if (format) {
-        console.log(format.url);
-        resolve(format.url);
-      } else {
-        reject(err);
-      }
-    });
-  });
+const getAudioUrl = async (videoId) => {
+  const info = await ytdl.getInfo(videoId, {});
+  const format = await ytdl.chooseFormat(info.formats, { quality: "140" });
+  return format;
+};
+
+const getPlaybackInfo = async (handlerInput) => {
+  const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+  return attributes.playbackInfo;
+};
+
+const getPlaybackSetting = async (handlerInput) => {
+  const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+  return attributes.playbackSetting;
+};
+
+/* INTERCEPTORS */
+
+const LoadPersistentAttributesRequestInterceptor = {
+  async process(handlerInput) {
+    const persistentAttributes = await handlerInput.attributesManager.getPersistentAttributes();
+
+    // Check if user is invoking the skill the first time and initialize preset values
+    if (Object.keys(persistentAttributes).length === 0) {
+      handlerInput.attributesManager.setPersistentAttributes({
+        playbackSetting: {
+          loop: false,
+        },
+        playbackInfo: {
+          playOrder: [],
+          index: 0,
+          offsetInMilliseconds: 0,
+          playbackIndexChanged: true,
+          token: "",
+          nextStreamEnqueued: false,
+          inPlaybackSession: false,
+          hasPreviousPlaybackSession: false,
+          query: "",
+          nextPageToken: "",
+        },
+      });
+    }
+  },
+};
+
+const SavePersistentAttributesResponseInterceptor = {
+  async process(handlerInput) {
+    await handlerInput.attributesManager.savePersistentAttributes();
+  },
 };
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
-exports.handler = Alexa.SkillBuilders.custom()
+exports.handler = Alexa.SkillBuilders.standard()
   .addRequestHandlers(
     CheckAudioInterfaceHandler,
     LaunchRequestHandler,
     GetVideoIntentHandler,
     SystemExceptionHandler,
     HelpIntentHandler,
+    LoopOnIntentHandler,
+    LoopOffIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
   )
+  .addRequestInterceptors(LoadPersistentAttributesRequestInterceptor)
+  .addResponseInterceptors(SavePersistentAttributesResponseInterceptor)
   .addErrorHandlers(ErrorHandler)
+  .withAutoCreateTable(true)
+  .withTableName(constants.config.dynamoDBTableName)
   .lambda();
