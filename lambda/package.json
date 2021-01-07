@@ -13,6 +13,6 @@
     "aws-sdk": "^2.326.0",
     "axios": "^0.21.1",
     "youtube-search": "^1.1.4",
-    "ytdl-core": "^4.4.0"
+    "ytdl-core": "^4.4.1"
   }
 }

@@ -13,11 +13,20 @@ const LaunchRequestHandler = {
       Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest"
     );
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     console.log("LaunchRequestHandler");
-    const message =
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    let message =
       "Welcome to Hey Tube. ask to play a video to start listening.";
-    const reprompt = "You can say, play the Whitesnake, to begin.";
+    let reprompt = "You can say, play your favourite artist name, to begin.";
+    if (playbackInfo.hasPreviousPlaybackSession) {
+      playbackInfo.inPlaybackSession = false;
+      message = `You were listening to ${
+        playbackInfo.playOrder[playbackInfo.index].snippet.title
+      }. Would you like to resume?`;
+      reprompt = "You can say yes to resume or no to play from the top.";
+    }
+
     return handlerInput.responseBuilder
       .speak(message)
       .reprompt(reprompt)
@@ -25,24 +34,76 @@ const LaunchRequestHandler = {
   },
 };
 
-const GetVideoIntentHandler = {
+const StartPlaybackHandler = {
   async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    if (!playbackInfo.inPlaybackSession) {
+      return (
+        Alexa.getRequestType(handlerInput.requestEnvelope) ===
+          "IntentRequest" &&
+        Alexa.getIntentName(handlerInput.requestEnvelope) === "GetVideoIntent"
+      );
+    }
+    if (
+      Alexa.getRequestType(handlerInput.requestEnvelope) ===
+      "PlaybackController.PlayCommandIssued"
+    ) {
+      return true;
+    }
+
+    if (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"
+    ) {
+      return (
+        Alexa.getIntentName(handlerInput.requestEnvelope) === "GetVideoIntent"
+      );
+    }
+  },
+  handle(handlerInput) {
+    console.log("StartPlaybackHandler");
+    const speechText =
+      handlerInput.requestEnvelope.request.intent.slots.videoQuery.value;
+    console.log(speechText);
+    return controller.search(handlerInput, speechText, null);
+  },
+};
+
+const YesIntentHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
     return (
+      !playbackInfo.inPlaybackSession &&
       Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) === "GetVideoIntent"
+      Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.YesIntent"
     );
   },
   handle(handlerInput) {
-    console.log("GetVideo");
-    const speechText =
-      handlerInput.requestEnvelope.request.intent.slots.videoQuery.value;
-    if (speechText) {
-      return controller.search(handlerInput, speechText);
-    } else {
-      return handlerInput.responseBuilder
-        .speak("You can say, play the Beatles, to begin.")
-        .getResponse();
-    }
+    console.log("YesHandler");
+    return controller.play(handlerInput, "Resuming: ");
+  },
+};
+
+const NoIntentHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    return (
+      !playbackInfo.inPlaybackSession &&
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.NoIntent"
+    );
+  },
+  async handle(handlerInput) {
+    console.log("NoHandler");
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    playbackInfo.index = 0;
+    playbackInfo.offsetInMilliseconds = 0;
+    playbackInfo.playbackIndexChanged = true;
+    playbackInfo.hasPreviousPlaybackSession = false;
+
+    return controller.play(handlerInput, "Playing: ");
   },
 };
 
@@ -64,6 +125,65 @@ const ResumePlaybackIntentHandler = {
   },
 };
 
+const StartOverIntentHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    return (
+      playbackInfo.inPlaybackSession &&
+      Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) ===
+        "AMAZON.StartOverIntent"
+    );
+  },
+  handle(handlerInput) {
+    console.log("StartOverHandler");
+    playbackInfo.offsetInMilliseconds = 0;
+    return controller.play(handlerInput, "Starting Over: ");
+  },
+};
+
+const NextPlaybackHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+
+    return (
+      playbackInfo.inPlaybackSession &&
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        "PlaybackController.NextCommandIssued" ||
+        (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+          "IntentRequest" &&
+          Alexa.getIntentName(handlerInput.requestEnvelope) ===
+            "AMAZON.NextIntent"))
+    );
+  },
+  handle(handlerInput) {
+    console.log("NextPlaybackHandler");
+    return controller.playNext(handlerInput);
+  },
+};
+
+const PreviousPlaybackHandler = {
+  async canHandle(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    const request = handlerInput.requestEnvelope.request;
+
+    return (
+      playbackInfo.inPlaybackSession &&
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        "PlaybackController.PreviousCommandIssued" ||
+        (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+          "IntentRequest" &&
+          Alexa.getIntentName(handlerInput.requestEnvelope) ===
+            "AMAZON.PreviousIntent"))
+    );
+  },
+  handle(handlerInput) {
+    console.log("PreviousPlaybackHandler");
+    return controller.playPrevious(handlerInput);
+  },
+};
+
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return (
@@ -73,7 +193,7 @@ const HelpIntentHandler = {
   },
   handle(handlerInput) {
     const speakOutput =
-      "Welcome to the Mytube. You can say, play video to begin.";
+      "Welcome to the Hey Tube. You can say, play your favourite artist name, to begin.";
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
@@ -81,7 +201,7 @@ const HelpIntentHandler = {
       .getResponse();
   },
 };
-const CancelAndStopIntentHandler = {
+const PauseAndStopIntentHandler = {
   canHandle(handlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
@@ -94,7 +214,7 @@ const CancelAndStopIntentHandler = {
     );
   },
   handle(handlerInput) {
-    console.log("CancelAndStopIntentHandler");
+    console.log("PauseAndStopIntentHandler");
     return controller.stop(handlerInput, "Pausing: ");
   },
 };
@@ -148,6 +268,7 @@ const AudioPlayerEventHandler = {
     const { requestEnvelope, responseBuilder } = handlerInput;
     const audioPlayerEventName = requestEnvelope.request.type.split(".")[1];
     const playbackInfo = await getPlaybackInfo(handlerInput);
+
     console.log("AudioPlayerEventHandler");
     console.log(audioPlayerEventName);
     switch (audioPlayerEventName) {
@@ -171,9 +292,43 @@ const AudioPlayerEventHandler = {
           handlerInput
         );
         break;
-      case "PlaybackNearlyFinished": {
+      case "PlaybackNearlyFinished":
+        {
+          if (playbackInfo.nextStreamEnqueued) {
+            break;
+          }
+          if (playbackInfo.index == constants.config.pageSize - 1) {
+            //Reached the end of the playList, fetch nextPage
+            console.log("End of Playlist, search with nextToken");
+            return controller.search(
+              handlerInput,
+              playbackInfo.query,
+              playbackInfo.nextPageToken
+            );
+          } else {
+            let nextAudio;
+            const playbackSetting = await getPlaybackSetting(handlerInput);
+            if (playbackSetting.loop) {
+              nextAudio = playbackInfo.playOrder[playbackInfo.index];
+            } else {
+              nextAudio = playbackInfo.playOrder[playbackInfo.index + 1];
+            }
+            const audioFormat = await getAudioUrl(nextAudio.id.videoId);
+            const expectedPreviousToken = playbackInfo.token;
+            const offsetInMilliseconds = 0;
+            const playBehavior = "ENQUEUE";
+            playbackInfo.nextStreamEnqueued = true;
+
+            responseBuilder.addAudioPlayerPlayDirective(
+              playBehavior,
+              audioFormat.url,
+              nextAudio.id.videoId,
+              offsetInMilliseconds,
+              expectedPreviousToken
+            );
+          }
+        }
         break;
-      }
       case "PlaybackFailed":
         playbackInfo.inPlaybackSession = false;
         console.log(
@@ -259,10 +414,14 @@ const ErrorHandler = {
 /* HELPER FUNCTIONS */
 
 const controller = {
-  async search(handlerInput, query) {
+  async search(handlerInput, query, nextPageToken) {
     console.log(query);
-    //const data = await getAudioInfo(query, null);
-    const data = await searchForVideos(query, null, 10);
+    const data = await searchForVideos(
+      query,
+      nextPageToken,
+      constants.config.pageSize
+    );
+    console.log(data);
     const playbackInfo = await getPlaybackInfo(handlerInput);
     playbackInfo.playOrder = data.results;
     playbackInfo.index = 0;
@@ -278,7 +437,9 @@ const controller = {
     const playBehavior = "REPLACE_ALL";
     const { playOrder, offsetInMilliseconds, index } = playbackInfo;
     const audioInfo = playOrder[index];
+    console.log(audioInfo);
     const audioFormat = await getAudioUrl(audioInfo.id.videoId);
+    console.log(audioFormat);
     responseBuilder
       .speak(`${message} ${audioInfo.snippet.title}`)
       .withShouldEndSession(true)
@@ -291,7 +452,7 @@ const controller = {
       );
 
     if (await canThrowCard(handlerInput)) {
-      const cardTitle = `Playing ${audioInfo.snippet.title}`;
+      const cardTitle = `${audioInfo.snippet.title}`;
       const cardContent = `Playing ${audioInfo.snippet.title}`;
       responseBuilder.withSimpleCard(cardTitle, cardContent);
     }
@@ -303,6 +464,36 @@ const controller = {
       .speak(message)
       .addAudioPlayerStopDirective()
       .getResponse();
+  },
+  async playNext(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    console.log("PlayNext");
+    if (playbackInfo.index == constants.config.pageSize - 1) {
+      //Reached the end of the playList, fetch nextPage
+      return controller.search(
+        handlerInput,
+        playbackInfo.query,
+        playbackInfo.nextPageToken
+      );
+    } else {
+      await setNextIndex(playbackInfo);
+    }
+    playbackInfo.offsetInMilliseconds = 0;
+    playbackInfo.playbackIndexChanged = true;
+    return this.play(handlerInput, "Playing Next: ");
+  },
+  async playPrevious(handlerInput) {
+    const playbackInfo = await getPlaybackInfo(handlerInput);
+    if (playbackInfo.index === 0) {
+      return handlerInput.responseBuilder
+        .speak("You have reached the start of the playlist")
+        .addAudioPlayerStopDirective()
+        .getResponse();
+    }
+    playbackInfo.index = playbackInfo.index - 1;
+    playbackInfo.offsetInMilliseconds = 0;
+    playbackInfo.playbackIndexChanged = true;
+    return this.play(handlerInput, "Playing Previous: ");
   },
 };
 
@@ -356,7 +547,7 @@ const canThrowCard = async (handlerInput) => {
     return true;
   }
   return false;
-}
+};
 
 const getToken = (handlerInput) => {
   // Extracting token received in the request.
@@ -419,13 +610,18 @@ exports.handler = Alexa.SkillBuilders.standard()
   .addRequestHandlers(
     CheckAudioInterfaceHandler,
     LaunchRequestHandler,
-    GetVideoIntentHandler,
     SystemExceptionHandler,
+    StartPlaybackHandler,
     HelpIntentHandler,
+    StartOverIntentHandler,
+    YesIntentHandler,
+    NoIntentHandler,
     LoopOnIntentHandler,
     LoopOffIntentHandler,
+    NextPlaybackHandler,
+    PreviousPlaybackHandler,
     ResumePlaybackIntentHandler,
-    CancelAndStopIntentHandler,
+    PauseAndStopIntentHandler,
     SessionEndedRequestHandler,
     AudioPlayerEventHandler
   )

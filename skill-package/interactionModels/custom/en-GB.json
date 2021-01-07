@@ -50,6 +50,31 @@
           "name": "AMAZON.LoopOffIntent",
           "slots": [],
           "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StartOverIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "slots": [],
+          "samples": []
         }
       ],
       "types": [
