@@ -81,7 +81,7 @@ const YesIntentHandler = {
   },
   handle(handlerInput) {
     console.log("YesHandler");
-    return controller.play(handlerInput, "Resuming: ");
+    return controller.play(handlerInput, "Resuming ");
   },
 };
 
@@ -103,7 +103,7 @@ const NoIntentHandler = {
     playbackInfo.playbackIndexChanged = true;
     playbackInfo.hasPreviousPlaybackSession = false;
 
-    return controller.play(handlerInput, "Playing: ");
+    return controller.play(handlerInput, "Playing ");
   },
 };
 
@@ -121,7 +121,7 @@ const ResumePlaybackIntentHandler = {
     );
   },
   handle(handlerInput) {
-    return controller.play(handlerInput, "Resuming: ");
+    return controller.play(handlerInput, "Resuming ");
   },
 };
 
@@ -139,7 +139,7 @@ const StartOverIntentHandler = {
   handle(handlerInput) {
     console.log("StartOverHandler");
     playbackInfo.offsetInMilliseconds = 0;
-    return controller.play(handlerInput, "Starting Over: ");
+    return controller.play(handlerInput, "Starting Over ");
   },
 };
 
@@ -166,7 +166,6 @@ const NextPlaybackHandler = {
 const PreviousPlaybackHandler = {
   async canHandle(handlerInput) {
     const playbackInfo = await getPlaybackInfo(handlerInput);
-    const request = handlerInput.requestEnvelope.request;
 
     return (
       playbackInfo.inPlaybackSession &&
@@ -203,6 +202,7 @@ const HelpIntentHandler = {
 };
 const PauseAndStopIntentHandler = {
   canHandle(handlerInput) {
+    
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
       (Alexa.getIntentName(handlerInput.requestEnvelope) ===
@@ -215,7 +215,7 @@ const PauseAndStopIntentHandler = {
   },
   handle(handlerInput) {
     console.log("PauseAndStopIntentHandler");
-    return controller.stop(handlerInput, "Pausing: ");
+    return controller.stop(handlerInput, "Pausing ");
   },
 };
 
@@ -234,7 +234,7 @@ const LoopOnIntentHandler = {
     const playbackSetting = await getPlaybackSetting(handlerInput);
     playbackSetting.loop = true;
 
-    return handlerInput.responseBuilder.speak("Loop turned on.").getResponse();
+    return handlerInput.responseBuilder.speak("Loop turned on").getResponse();
   },
 };
 
@@ -253,7 +253,7 @@ const LoopOffIntentHandler = {
     const playbackSetting = await getPlaybackSetting(handlerInput);
     playbackSetting.loop = false;
 
-    return handlerInput.responseBuilder.speak("Loop turned off.").getResponse();
+    return handlerInput.responseBuilder.speak("Loop turned off").getResponse();
   },
 };
 
@@ -335,7 +335,8 @@ const AudioPlayerEventHandler = {
           "Playback Failed : %j",
           handlerInput.requestEnvelope.request.error
         );
-        return;
+        //Skip to the next audio
+        return controller.playNext(handlerInput);
       default:
         throw new Error("Should never reach here!");
     }
@@ -421,7 +422,6 @@ const controller = {
       nextPageToken,
       constants.config.pageSize
     );
-    console.log(data);
     const playbackInfo = await getPlaybackInfo(handlerInput);
     playbackInfo.playOrder = data.results;
     playbackInfo.index = 0;
@@ -429,7 +429,7 @@ const controller = {
     playbackInfo.playbackIndexChanged = true;
     playbackInfo.query = query;
     playbackInfo.nextPageToken = data.nextPageToken;
-    return this.play(handlerInput, "Playing: ");
+    return this.play(handlerInput, "Playing ");
   },
   async play(handlerInput, message) {
     const { attributesManager, responseBuilder } = handlerInput;
@@ -437,9 +437,7 @@ const controller = {
     const playBehavior = "REPLACE_ALL";
     const { playOrder, offsetInMilliseconds, index } = playbackInfo;
     const audioInfo = playOrder[index];
-    console.log(audioInfo);
     const audioFormat = await getAudioUrl(audioInfo.id.videoId);
-    console.log(audioFormat);
     responseBuilder
       .speak(`${message} ${audioInfo.snippet.title}`)
       .withShouldEndSession(true)
@@ -480,7 +478,7 @@ const controller = {
     }
     playbackInfo.offsetInMilliseconds = 0;
     playbackInfo.playbackIndexChanged = true;
-    return this.play(handlerInput, "Playing Next: ");
+    return this.play(handlerInput, "Playing Next ");
   },
   async playPrevious(handlerInput) {
     const playbackInfo = await getPlaybackInfo(handlerInput);
@@ -493,7 +491,7 @@ const controller = {
     playbackInfo.index = playbackInfo.index - 1;
     playbackInfo.offsetInMilliseconds = 0;
     playbackInfo.playbackIndexChanged = true;
-    return this.play(handlerInput, "Playing Previous: ");
+    return this.play(handlerInput, "Playing Previous ");
   },
 };
 
