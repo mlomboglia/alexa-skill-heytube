@@ -3,3 +3,5 @@ package-lock.json
 .DS_Store
 .env
 .ask/
+bst-debug.log
+test_output
