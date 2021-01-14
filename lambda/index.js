@@ -1,9 +1,8 @@
 const Alexa = require("ask-sdk");
 const ytdl = require("ytdl-core");
-const constants = require("./constants");
+const ytlist = require("yt-list");
 
-const axios = require("./api/youtube-axios");
-const youtubeAPI = require("./api/youtube-api");
+const constants = require("./constants");
 
 /* INTENT HANDLERS */
 
@@ -98,12 +97,8 @@ const NoIntentHandler = {
   async handle(handlerInput) {
     console.log("NoHandler");
     const playbackInfo = await getPlaybackInfo(handlerInput);
-    playbackInfo.index = 0;
     playbackInfo.offsetInMilliseconds = 0;
-    playbackInfo.playbackIndexChanged = true;
-    playbackInfo.hasPreviousPlaybackSession = false;
-
-    return controller.play(handlerInput, "Playing ");
+    return controller.play(handlerInput, "Starting Over ");
   },
 };
 
@@ -143,7 +138,7 @@ const StartOverIntentHandler = {
   },
 };
 
-const NextPlaybackHandler = {
+const NextPlaybackIntentHandler = {
   async canHandle(handlerInput) {
     const playbackInfo = await getPlaybackInfo(handlerInput);
 
@@ -163,7 +158,7 @@ const NextPlaybackHandler = {
   },
 };
 
-const PreviousPlaybackHandler = {
+const PreviousPlaybackIntentHandler = {
   async canHandle(handlerInput) {
     const playbackInfo = await getPlaybackInfo(handlerInput);
 
@@ -438,6 +433,7 @@ const controller = {
     const { playOrder, offsetInMilliseconds, index } = playbackInfo;
     const audioInfo = playOrder[index];
     const audioFormat = await getAudioUrl(audioInfo.id.videoId);
+    console.log(`${message} ${audioInfo.snippet.title}`);
     responseBuilder
       .speak(`${message} ${audioInfo.snippet.title}`)
       .withShouldEndSession(true)
@@ -496,25 +492,8 @@ const controller = {
 };
 
 const searchForVideos = async (searchQuery, nextPageToken, amount) => {
-  const config = youtubeAPI.buildSearchRequest(
-    searchQuery,
-    nextPageToken,
-    amount
-  );
-  return axios
-    .request(config)
-    .then((response) => {
-      const results = youtubeAPI.reduceSearchForVideos(
-        response.data,
-        searchQuery
-      );
-      return results;
-    })
-    .catch((err) => {
-      console.log(err);
-      return err;
-    });
-};
+  return await ytlist.searchVideos(searchQuery, nextPageToken, amount);
+}
 
 const getAudioUrl = async (videoId) => {
   const audioInfo = await ytdl.getInfo(videoId, {});
@@ -532,19 +511,6 @@ const getPlaybackInfo = async (handlerInput) => {
 const getPlaybackSetting = async (handlerInput) => {
   const attributes = await handlerInput.attributesManager.getPersistentAttributes();
   return attributes.playbackSetting;
-};
-
-const canThrowCard = async (handlerInput) => {
-  const playbackInfo = await getPlaybackInfo(handlerInput);
-
-  if (
-    Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
-    playbackInfo.playbackIndexChanged
-  ) {
-    playbackInfo.playbackIndexChanged = false;
-    return true;
-  }
-  return false;
 };
 
 const getToken = (handlerInput) => {
@@ -566,8 +532,20 @@ const getOffsetInMilliseconds = (handlerInput) => {
   return handlerInput.requestEnvelope.request.offsetInMilliseconds;
 };
 
-/* INTERCEPTORS */
+const canThrowCard = async (handlerInput) => {
+  const playbackInfo = await getPlaybackInfo(handlerInput);
 
+  if (
+    Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest" &&
+    playbackInfo.playbackIndexChanged
+  ) {
+    playbackInfo.playbackIndexChanged = false;
+    return true;
+  }
+  return false;
+};
+
+/* INTERCEPTORS */
 const LoadPersistentAttributesRequestInterceptor = {
   async process(handlerInput) {
     const persistentAttributes = await handlerInput.attributesManager.getPersistentAttributes();
@@ -616,8 +594,8 @@ exports.handler = Alexa.SkillBuilders.standard()
     NoIntentHandler,
     LoopOnIntentHandler,
     LoopOffIntentHandler,
-    NextPlaybackHandler,
-    PreviousPlaybackHandler,
+    NextPlaybackIntentHandler,
+    PreviousPlaybackIntentHandler,
     ResumePlaybackIntentHandler,
     PauseAndStopIntentHandler,
     SessionEndedRequestHandler,

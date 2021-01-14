@@ -538,3 +538,315 @@ Please provide the correct location of the Interaction Model.
     at TestParser.parse (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/dist/lib/test/TestParser.js:156:30)
     at TestRunner.parseContents (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/dist/lib/runner/TestRunner.js:586:26)
     at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/dist/lib/runner/TestRunner.js:74:39
+2021-01-14T14:40:59.105Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.138Z error: bst-test            Error: Cannot find module 'yt-list' from 'index.js'
+    at Resolver.resolveModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:259:17)
+    at Resolver._getVirtualMockPath (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:390:14)
+    at Resolver._getAbsolutePath (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:376:14)
+    at Resolver.getModuleID (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:348:31)
+    at Runtime._shouldMock (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:942:37)
+    at Runtime.require [as requireModuleOrMock] (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:595:16)
+    at Object.<anonymous> (/Users/mlomboglia/Desktop/alexa/alexa-skill-heytube/lambda/index.js:3:16)
+    at Runtime._execModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:867:68)
+    at Runtime._loadModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:577:12)
+    at Runtime.requireModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:433:10)
+2021-01-14T14:40:59.140Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.143Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.145Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.145Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.146Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.146Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.146Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.147Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.147Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.148Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.148Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.148Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.149Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.149Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.149Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.150Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.150Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.150Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.151Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.151Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.151Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.151Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:40:59.157Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:40:59.157Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.868Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.901Z error: bst-test            Error: Cannot find module 'yt-list' from 'index.js'
+    at Resolver.resolveModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:259:17)
+    at Resolver._getVirtualMockPath (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:390:14)
+    at Resolver._getAbsolutePath (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:376:14)
+    at Resolver.getModuleID (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-resolve/build/index.js:348:31)
+    at Runtime._shouldMock (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:942:37)
+    at Runtime.require [as requireModuleOrMock] (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:595:16)
+    at Object.<anonymous> (/Users/mlomboglia/Desktop/alexa/alexa-skill-heytube/lambda/index.js:3:16)
+    at Runtime._execModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:867:68)
+    at Runtime._loadModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:577:12)
+    at Runtime.requireModule (/usr/local/lib/node_modules/bespoken-tools/node_modules/jest-runtime/build/index.js:433:10)
+2021-01-14T14:45:32.902Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.904Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.905Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.906Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.906Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.906Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.907Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.907Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.908Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.908Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.908Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.908Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.909Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.909Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.909Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.909Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.910Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.910Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.910Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.911Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.911Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.911Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
+2021-01-14T14:45:32.911Z error: bst-test            Error using bst-test on Node: v12.18.3
+2021-01-14T14:45:32.912Z error: bst-test            TypeError: lambdaFunction is not a function
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:31:27
+    at new Promise (<anonymous>)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeFunction (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:21:16)
+    at Function.Object.<anonymous>.ModuleInvoker.invokeHandler (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/ModuleInvoker.js:18:30)
+    at LocalSkillInteractor.Object.<anonymous>.LocalSkillInteractor.invoke (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/LocalSkillInteractor.js:24:50)
+    at LocalSkillInteractor.<anonymous> (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:65:41)
+    at step (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:32:23)
+    at Object.next (/usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:13:53)
+    at /usr/local/lib/node_modules/bespoken-tools/node_modules/skill-testing-ml/node_modules/virtual-alexa/lib/src/impl/SkillInteractor.js:7:71
+    at new Promise (<anonymous>)
