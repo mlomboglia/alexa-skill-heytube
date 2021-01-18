@@ -418,7 +418,7 @@ const controller = {
       constants.config.pageSize
     );
     const playbackInfo = await getPlaybackInfo(handlerInput);
-    playbackInfo.playOrder = data.results;
+    playbackInfo.playOrder = data.items;
     playbackInfo.index = 0;
     playbackInfo.offsetInMilliseconds = 0;
     playbackInfo.playbackIndexChanged = true;
@@ -427,6 +427,7 @@ const controller = {
     return this.play(handlerInput, "Playing ");
   },
   async play(handlerInput, message) {
+    console.log("Play");
     const { attributesManager, responseBuilder } = handlerInput;
     const playbackInfo = await getPlaybackInfo(handlerInput);
     const playBehavior = "REPLACE_ALL";
@@ -434,6 +435,8 @@ const controller = {
     const audioInfo = playOrder[index];
     const audioFormat = await getAudioUrl(audioInfo.id.videoId);
     console.log(`${message} ${audioInfo.snippet.title}`);
+    console.log(audioFormat.url);
+    console.log(audioInfo.id.videoId);
     responseBuilder
       .speak(`${message} ${audioInfo.snippet.title}`)
       .withShouldEndSession(true)
@@ -450,7 +453,7 @@ const controller = {
       const cardContent = `Playing ${audioInfo.snippet.title}`;
       responseBuilder.withSimpleCard(cardTitle, cardContent);
     }
-
+    console.log("getresponse");
     return responseBuilder.getResponse();
   },
   async stop(handlerInput, message) {
