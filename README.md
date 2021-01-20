@@ -3,7 +3,7 @@ Build an Alexa Skill to play audio from YouTube videos
 
 ![Alt Alexa Skill + YouTube](/img/alexa-youtube.jpg)
 
-Complete instructions available in my Medium Posts:
+Detailed instructions available in my Medium Posts:</br>
 
 # Multiple Audios
 A Complete Alexa Skill player to listen to audio from YouTube</br>
