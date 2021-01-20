@@ -1,9 +1,9 @@
 {
-  "skillId": "amzn1.ask.skill.09c54e31-4e84-49ea-bd57-031d63769c23",
+  "skillId": "amzn1.ask.skill.d18633d2-5cd5-41ab-8b24-de8362b2f5f5",
   "locale": "en-GB",
   "type": "text",
   "userInput": [
-    "alexa open hey tube",
+    "alexa open simple tube",
     "play whitesnake",
     "stop",
     ".quit"

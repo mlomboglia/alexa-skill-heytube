@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "hey tube",
+      "invocationName": "simple tube",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",

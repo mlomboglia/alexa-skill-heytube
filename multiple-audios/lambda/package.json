@@ -1,7 +1,7 @@
 {
-  "name": "alexa-skill-hey-tube",
+  "name": "alexa-skill-multi-tube",
   "version": "1.1.0",
-  "description": "alexa skill to listen to youtube videos",
+  "description": "A complete player to listen to audio from YouTube",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,8 @@
   "dependencies": {
     "ask-sdk": "^2.8.0",
     "aws-sdk": "^2.326.0",
-    "youtube-search": "^1.1.4",
-    "ytdl-core": "^3.1.2"
+    "axios": "^0.21.1",
+    "yt-list": "0.0.16",
+    "ytdl-core": "^4.4.1"
   }
 }

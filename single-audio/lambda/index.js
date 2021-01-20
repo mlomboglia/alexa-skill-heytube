@@ -1,5 +1,5 @@
 const Alexa = require("ask-sdk");
-const search = require("youtube-search");
+const ytlist = require("yt-list");
 const ytdl = require("ytdl-core");
 
 /* INTENT HANDLERS */
@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
   handle(handlerInput) {
     console.log("LaunchRequestHandler");
     const message =
-      "Welcome to Hey Tube. ask to play a video to start listening.";
+      "Welcome to Simple Tube. Ask to play a video to start listening.";
     const reprompt = "You can say, play the Whitesnake, to begin.";
     return handlerInput.responseBuilder
       .speak(message)
@@ -68,7 +68,7 @@ const HelpIntentHandler = {
   },
   handle(handlerInput) {
     const speakOutput =
-      "Welcome to the Mytube. You can say, play video to begin.";
+      "Welcome to Simple tube. You can say, play video to begin.";
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
@@ -127,7 +127,8 @@ const SessionEndedRequestHandler = {
 // stating the request handler chain is not found, you have not implemented a handler for
 // the intent being invoked or included it in the skill builder below.
 const ErrorHandler = {
-  canHandle() {
+  canHandle(handlerInput) {
+    console.log(handlerInput.requestEnvelope.request.type);
     return true;
   },
   handle(handlerInput, error) {
@@ -144,27 +145,58 @@ const ErrorHandler = {
   },
 };
 
+/**
+ * Handle Audio Player Events
+ */
+const AudioPlayerEventHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type.startsWith("AudioPlayer.");
+  },
+  async handle(handlerInput) {
+    const { requestEnvelope, responseBuilder } = handlerInput;
+    const audioPlayerEventName = requestEnvelope.request.type.split(".")[1];
+    
+    console.log("AudioPlayerEventHandler");
+    console.log(audioPlayerEventName);
+    switch (audioPlayerEventName) {
+      case "PlaybackStarted":
+        break;
+      case "PlaybackFinished":
+        break;
+      case "PlaybackStopped":
+        break;
+      case "PlaybackNearlyFinished":
+        break;
+      case "PlaybackFailed":
+        break;
+      default:
+        throw new Error("Should never reach here!");
+    }
+
+    return responseBuilder.getResponse();
+  },
+};
+
 /* HELPER FUNCTIONS */
 
 const controller = {
   async search(handlerInput, query) {
     console.log(query);
-    const data = await getAudioInfo(query);
-    return this.play(handlerInput, data[0]);
+    const data = await searchForVideos(query);
+    return this.play(handlerInput, data.items[0]);
   },
   async play(handlerInput, audioInfo) {
     const { responseBuilder } = handlerInput;
     const playBehavior = "REPLACE_ALL";
     console.log("play");
-    const audioUrl = await getAudioUrl(audioInfo.id);
-    console.log(audioUrl);
-    console.log(audioInfo.title);
+    console.log(audioInfo);
+    const audioFormat = await getAudioUrl(audioInfo.id.videoId);
     responseBuilder
       .speak(`Playing  ${audioInfo.title}`)
       .withShouldEndSession(true)
       .addAudioPlayerPlayDirective(
         playBehavior,
-        audioUrl,
+        audioFormat.url,
         audioInfo.id,
         0,
         null
@@ -179,42 +211,16 @@ const controller = {
   },
 };
 
-const getAudioInfo = (query) => {
-  return new Promise((resolve, reject) => {
-    var opts = {
-      maxResults: 1,
-      key: process.env.YOUTUBE_API_KEY,
-      part: "id,snippet",
-      type: "video",
-    };
+const searchForVideos = async (searchQuery) => {
+  return await ytlist.searchVideos(searchQuery, null, 1);
+}
 
-    search(query, opts, function (err, results) {
-      if (err) {
-        reject(err);
-      }
-      resolve(results);
-    });
+const getAudioUrl = async (videoId) => {
+  const audioInfo = await ytdl.getInfo(videoId, {});
+  const audioFormat = await ytdl.chooseFormat(audioInfo.formats, {
+    quality: "140",
   });
-};
-
-const getAudioUrl = (videoId) => {
-  return new Promise((resolve, reject) => {
-    console.log(videoId);
-    ytdl.getInfo(videoId, (err, info) => {
-      if (err) {
-        console.log(err);
-        reject(err);
-      }
-      console.log(info.formats);
-      let format = ytdl.chooseFormat(info.formats, { quality: "140" });
-      if (format) {
-        console.log(format.url);
-        resolve(format.url);
-      } else {
-        reject(err);
-      }
-    });
-  });
+  return audioFormat;
 };
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
@@ -228,7 +234,8 @@ exports.handler = Alexa.SkillBuilders.custom()
     SystemExceptionHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
-    SessionEndedRequestHandler
+    SessionEndedRequestHandler,
+    AudioPlayerEventHandler
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();

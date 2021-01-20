@@ -3,3 +3,17 @@ package-lock.json
 .DS_Store
 .env
 .ask/
+bst-debug.log
+test_output
+
+**/.idea
+**/.vscode
+**/node_modules
+**/*.zip
+**/dist
+**/.env
+**/.ask
+**/.DS_Store
+**/bst-debug.log
+**/test_output
+**/package-lock.json

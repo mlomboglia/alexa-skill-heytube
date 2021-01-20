@@ -1,0 +1,57 @@
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/unit-testing/getting-started/
+#
+# Skill name: A complete player to listen to audio from YouTube
+# Test scope: LaunchRequest, GetVideoIntent, AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
+#             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent
+#             AMAZON.NextIntent, AMAZON.PreviousIntent
+# Description: Tests an AudioPlayer to listen to YouTube audio
+#=====================================================================================================================
+
+---
+configuration:
+  dynamo: mock
+  userId: mockUserID
+
+---
+- test: Launch request, no further interaction.
+- LaunchRequest:
+  - response.outputSpeech.ssml: Welcome to Multi Tube. ask to play a video to start listening.
+  - response.reprompt.outputSpeech.ssml: You can say, play your favourite artist name, to begin.
+  - response.shouldEndSession: false
+- AMAZON.StopIntent: Pausing 
+
+---
+- test: Launch request and start playing audio.
+- GetVideoIntent videoQuery=Whitesnake:
+  - response.outputSpeech.ssml: "Playing *"
+  - $..playBehavior: REPLACE_ALL
+  - response.shouldEndSession: true
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+- AMAZON.ResumeIntent: "Resuming *"
+
+---
+- test: Pause audio and resume.
+- GetVideoIntent videoQuery=Whitesnake:
+  - response.outputSpeech.ssml: "Playing *"
+- AMAZON.PauseIntent: "Pausing"
+- AMAZON.ResumeIntent: "Resuming"
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop
+
+---
+- test: Start audio, next track, previous track, stop.
+- GetVideoIntent videoQuery=Whitesnake:
+  - response.outputSpeech.ssml: "Playing *"
+- AMAZON.NextIntent:  "Playing Next *"
+- AMAZON.PreviousIntent: "Playing Previous *"
+- AMAZON.StopIntent:
+  - response.directives[0].type: AudioPlayer.Stop

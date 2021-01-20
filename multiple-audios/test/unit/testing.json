@@ -1,0 +1,12 @@
+{
+    "handler": "../../lambda/index.js",
+    "locale": "en-GB",
+    "interactionModel": "../../skill-package/interactionModels/custom/en-GB.json",
+    "trace": false,
+    "jest": {
+      "silent": false,
+      "collectCoverageFrom": [
+        "**/index.js"
+      ]
+    }
+  }
