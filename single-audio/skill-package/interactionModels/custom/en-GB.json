@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "hey tube",
+      "invocationName": "simple tube",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -38,41 +38,6 @@
         },
         {
           "name": "AMAZON.ResumeIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.LoopOnIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.LoopOffIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.PreviousIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StartOverIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.YesIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NoIntent",
-          "slots": [],
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NextIntent",
           "slots": [],
           "samples": []
         }

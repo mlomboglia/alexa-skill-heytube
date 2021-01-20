@@ -1,7 +1,7 @@
 {
-  "name": "alexa-skill-hey-tube",
+  "name": "alexa-skill-multi-tube",
   "version": "1.1.0",
-  "description": "alexa skill to listen to youtube videos",
+  "description": "A complete player to listen to audio from YouTube",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,94 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "multi tube",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "GetVideoIntent",
+          "slots": [
+            {
+              "name": "videoQuery",
+              "type": "VIDEOS"
+            }
+          ],
+          "samples": [
+            "search for {videoQuery}",
+            "find {videoQuery}",
+            "play {videoQuery}",
+            "start playing {videoQuery}",
+            "put on {videoQuery}"
+          ]
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.LoopOnIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.LoopOffIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StartOverIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "slots": [],
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "name": "VIDEOS",
+          "values": [
+            {
+              "name": {
+                "value": "the rolling stones"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

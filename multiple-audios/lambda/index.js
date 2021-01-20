@@ -16,7 +16,7 @@ const LaunchRequestHandler = {
     console.log("LaunchRequestHandler");
     const playbackInfo = await getPlaybackInfo(handlerInput);
     let message =
-      "Welcome to Hey Tube. ask to play a video to start listening.";
+      "Welcome to Multi Tube. ask to play a video to start listening.";
     let reprompt = "You can say, play your favourite artist name, to begin.";
     if (playbackInfo.hasPreviousPlaybackSession) {
       playbackInfo.inPlaybackSession = false;
@@ -187,7 +187,7 @@ const HelpIntentHandler = {
   },
   handle(handlerInput) {
     const speakOutput =
-      "Welcome to the Hey Tube. You can say, play your favourite artist name, to begin.";
+      "Welcome to Multi Tube. You can say, play your favourite artist name, to begin.";
 
     return handlerInput.responseBuilder
       .speak(speakOutput)

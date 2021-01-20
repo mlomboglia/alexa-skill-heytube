@@ -8,11 +8,11 @@
 # Created by Bespoken
 # Learn more at https://read.bespoken.io/unit-testing/getting-started/
 #
-# Skill name: Audio Player Multiple Streams by Amazon
-# Test scope: LaunchRequest, AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
+# Skill name: A complete player to listen to audio from YouTube
+# Test scope: LaunchRequest, GetVideoIntent, AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
 #             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent
 #             AMAZON.NextIntent, AMAZON.PreviousIntent
-# Description: Tests an AudioPlayer skill with multiple streams, with previous and next
+# Description: Tests an AudioPlayer to listen to YouTube audio
 #=====================================================================================================================
 
 ---
@@ -23,7 +23,7 @@ configuration:
 ---
 - test: Launch request, no further interaction.
 - LaunchRequest:
-  - response.outputSpeech.ssml: Welcome to Hey Tube. ask to play a video to start listening.
+  - response.outputSpeech.ssml: Welcome to Multi Tube. ask to play a video to start listening.
   - response.reprompt.outputSpeech.ssml: You can say, play your favourite artist name, to begin.
   - response.shouldEndSession: false
 - AMAZON.StopIntent: Pausing 
