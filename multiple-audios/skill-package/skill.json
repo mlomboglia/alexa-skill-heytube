@@ -31,7 +31,11 @@
           }
         ],
         "endpoint": {
+<<<<<<< HEAD:multiple-audios/skill-package/skill.json
           "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-playtube-default-default-1611161223837"
+=======
+          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-heytube-default-default-1609336787911"
+>>>>>>> 558dfd342c4178588d538634702e85a86c2f8a42:skill-package/skill.json
         }
       }
     },
