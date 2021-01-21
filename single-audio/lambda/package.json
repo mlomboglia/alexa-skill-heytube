@@ -1,5 +1,5 @@
 {
-  "name": "alexa-skill-simple-tube",
+  "name": "alexa-skill-single-tube",
   "version": "1.1.0",
   "description": "Alexa Skill to listen to a single track audio from YouTube",
   "main": "index.js",

@@ -10,7 +10,7 @@ A Complete Alexa Skill Audio Player to listen to audio from YouTube</br>
 
 Article coming soon
 
-# Simple Audio
+# Single Audio
 Alexa Skill to listen to a single track audio from YouTube</br>
 
 https://medium.com/better-programming/how-to-play-youtube-audio-from-your-alexa-e2d4fb8b5ce9

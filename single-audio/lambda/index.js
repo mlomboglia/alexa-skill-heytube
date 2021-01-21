@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
   handle(handlerInput) {
     console.log("LaunchRequestHandler");
     const message =
-      "Welcome to Simple Tube. Ask to play a video to start listening.";
+      "Welcome to Single Tube. Ask to play a video to start listening.";
     const reprompt = "You can say, play the Whitesnake, to begin.";
     return handlerInput.responseBuilder
       .speak(message)
@@ -68,7 +68,7 @@ const HelpIntentHandler = {
   },
   handle(handlerInput) {
     const speakOutput =
-      "Welcome to Simple tube. You can say, play video to begin.";
+      "Welcome to Single tube. You can say, play video to begin.";
 
     return handlerInput.responseBuilder
       .speak(speakOutput)

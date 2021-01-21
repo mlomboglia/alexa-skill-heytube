@@ -16,7 +16,7 @@
 ---
 - test: Launch request, no further interaction.
 - LaunchRequest:
-  - response.outputSpeech.ssml: Welcome to Simple Tube. Ask to play a video to start listening.
+  - response.outputSpeech.ssml: Welcome to Single Tube. Ask to play a video to start listening.
   - response.reprompt.outputSpeech.ssml: You can say, play the Whitesnake, to begin.
   - response.shouldEndSession: false
 - AMAZON.StopIntent: Goodbye!

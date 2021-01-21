@@ -5,14 +5,14 @@
         "en-GB": {
           "summary": "A complete player to listen to audio from YouTube",
           "examplePhrases": [
-            "Alexa open play tube"
+            "Alexa open multi tube"
           ],
           "keywords": [
             "audio",
             "streaming",
             "youtube"
           ],
-          "name": "Play Tube",
+          "name": "Multi Tube",
           "description": "A complete player to listen to audio from YouTube",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
@@ -31,11 +31,7 @@
           }
         ],
         "endpoint": {
-<<<<<<< HEAD:multiple-audios/skill-package/skill.json
-          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-playtube-default-default-1611161223837"
-=======
-          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-heytube-default-default-1609336787911"
->>>>>>> 558dfd342c4178588d538634702e85a86c2f8a42:skill-package/skill.json
+          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-multitube-default-default-1611171233952"
         }
       }
     },

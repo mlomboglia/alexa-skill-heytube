@@ -5,14 +5,14 @@
         "en-GB": {
           "summary": "Listen to a single track audio from YouTube",
           "examplePhrases": [
-            "Alexa open simple tube"
+            "Alexa open single tube"
           ],
           "keywords": [
             "audio",
             "streaming",
             "youtube"
           ],
-          "name": "Simple Tube",
+          "name": "Single Tube",
           "description": "Alexa Skill to listen to a single track audio from YouTube",
           "smallIconUri": "https://alexademo.ninja/skills/logo-108.png",
           "largeIconUri": "https://alexademo.ninja/skills/logo-512.png"
@@ -31,7 +31,7 @@
           }
         ],
         "endpoint": {
-          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-simpletube-default-default-1611158695742"
+          "uri": "arn:aws:lambda:eu-west-1:924338216746:function:ask-singletube-default-default-1611239792781"
         }
       }
     },
