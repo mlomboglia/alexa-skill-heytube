@@ -6,9 +6,9 @@ Build Alexa Skills to play audio from YouTube videos
 Detailed instructions available in my Medium Posts:</br>
 
 # Multiple Audio
-A Complete Alexa Skill Audio Player to listen to audio from YouTube</br>
+A Complete Alexa Skill to Play Multi-Track Audio From YouTube Videos</br>
 
-Article coming soon
+https://medium.com/better-programming/a-complete-alexa-skill-to-play-multi-track-audio-from-youtube-videos-9518d5219aa
 
 # Single Audio
 Alexa Skill to listen to a single track audio from YouTube</br>
