@@ -192,12 +192,12 @@ const controller = {
     console.log(audioInfo);
     const audioFormat = await getAudioUrl(audioInfo.id.videoId);
     responseBuilder
-      .speak(`Playing  ${audioInfo.title}`)
+      .speak(`Playing  ${audioInfo.snippet.title}`)
       .withShouldEndSession(true)
       .addAudioPlayerPlayDirective(
         playBehavior,
         audioFormat.url,
-        audioInfo.id,
+        audioInfo.id.videoId,
         0,
         null
       );
